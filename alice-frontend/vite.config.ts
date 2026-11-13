@@ -9,7 +9,7 @@ export default defineConfig({
     host: true,
     proxy: {
       '/api': {
-        target: 'http://localhost:8000',
+        target: 'https://smcon26-final-production.up.railway.app',
         changeOrigin: true,
       },
     },

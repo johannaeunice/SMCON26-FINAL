@@ -168,7 +168,7 @@ export const ProviderPortal: React.FC = () => {
               Provider Desk
             </span>
             <h2 className="font-extrabold text-midnight-navy text-lg">
-              Fru Plumbing & Engineering
+              Fruh Plumbing & Engineering
             </h2>
           </div>
           <button

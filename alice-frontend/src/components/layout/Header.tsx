@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Bell, ShieldAlert, Globe, User as UserIcon, Home, Compass, CalendarCheck2, Zap } from 'lucide-react';
+import { Bell, ShieldAlert, Globe, User as UserIcon } from 'lucide-react';
 import { useAuth } from '../../context/AuthContext';
 import { useLanguage } from '../../context/LanguageContext';
 import { useNotification } from '../../context/NotificationContext';
@@ -23,39 +23,32 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAuth, onOpenReport, onSele
 
   return (
     <>
-      <header className="alice-header">
-        <div className="alice-header-inner">
+      <header className="bg-alice-header-gradient text-pure-white px-4 pt-4 pb-4 shadow-card sticky top-0 z-40">
+        <div className="max-w-md mx-auto flex items-center justify-between">
           {/* Brand & Wordmark */}
           <div
             className="flex items-center space-x-2 cursor-pointer select-none"
             onClick={() => onSelectTab('home')}
           >
-            <div className="alice-brand-mark">
-              <span>A</span>
+            <div className="w-8 h-8 rounded-xl bg-pure-white flex items-center justify-center shadow-xs">
+              <span className="font-extrabold text-royal-indigo text-lg tracking-tighter">A</span>
             </div>
             <div>
-              <span className="alice-brand-name">
+              <span className="font-extrabold text-xl tracking-tight text-pure-white drop-shadow-xs">
                 ALICE
               </span>
-              <span className="alice-brand-subtitle">
+              <span className="block text-[10px] font-semibold tracking-wider text-pure-white/90 uppercase -mt-1">
                 Buea Services
               </span>
             </div>
           </div>
 
-          <nav className="alice-desktop-nav" aria-label="Main navigation">
-            <button onClick={() => onSelectTab('home')}><Home /> Home</button>
-            <button onClick={() => onSelectTab('explore')}><Compass /> Explore</button>
-            <button onClick={() => onSelectTab('bookings')}><CalendarCheck2 /> My bookings</button>
-            <button onClick={() => onSelectTab('rentals')}><Zap /> Power rentals</button>
-          </nav>
-
           {/* Quick Actions Header Toolbar */}
-          <div className="alice-header-actions">
+          <div className="flex items-center space-x-1.5">
             {/* Language Toggle EN / FR */}
             <button
               onClick={toggleLanguage}
-              className="alice-header-icon-button alice-language-button"
+              className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-pure-white/20 hover:bg-pure-white/30 text-pure-white text-xs font-bold transition-all backdrop-blur-xs cursor-pointer"
               title="Toggle Language EN / FR"
               aria-label="Toggle Language"
             >
@@ -66,7 +59,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAuth, onOpenReport, onSele
             {/* Safety SOS Quick Trigger */}
             <button
               onClick={onOpenReport}
-              className="alice-header-icon-button alice-sos-button"
+              className="p-1.5 rounded-full bg-rose-500/80 hover:bg-rose-500 text-pure-white transition-all shadow-xs cursor-pointer"
               title="Report Incident / Safety SOS"
               aria-label="Report Incident"
             >
@@ -76,7 +69,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAuth, onOpenReport, onSele
             {/* Notification Bell */}
             <button
               onClick={() => setShowNotifications(true)}
-              className="relative alice-header-icon-button"
+              className="relative p-1.5 rounded-full bg-pure-white/20 hover:bg-pure-white/30 text-pure-white transition-all cursor-pointer"
               aria-label="Notifications"
             >
               <Bell className="w-4 h-4" />
@@ -91,7 +84,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAuth, onOpenReport, onSele
             {isAuthenticated && user ? (
               <button
                 onClick={() => onSelectTab('profile')}
-                className="alice-header-avatar"
+                className="w-8 h-8 rounded-full bg-pure-white text-royal-indigo font-bold text-xs flex items-center justify-center shadow-xs border-2 border-pure-white/80 cursor-pointer"
                 title={user.display_name}
               >
                 {user.display_name.charAt(0).toUpperCase()}
@@ -99,7 +92,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenAuth, onOpenReport, onSele
             ) : (
               <button
                 onClick={onOpenAuth}
-                className="alice-signin-button"
+                className="flex items-center space-x-1 px-2.5 py-1 rounded-full bg-pure-white text-royal-indigo text-xs font-bold shadow-xs hover:bg-pure-white/95 transition-all cursor-pointer"
               >
                 <UserIcon className="w-3.5 h-3.5" />
                 <span>Login</span>
